@@ -58,11 +58,18 @@ postgres_connection_password: 'We5M6fe1OWOx5yUajxvFwoLnKdXbnXoxHx4CNLZsZd9fASYI9
 #
 matrix_coturn_turn_external_ip_address: '54.39.193.200'
 
+# is used for hosting the federation files on this server the /well-known files
+
 matrix_static_files_container_labels_base_domain_enabled: true
+
+# turn on sliding sync for the newer element apps
 
 matrix_sliding_sync_enabled: true
 
-backup_borg_enabled: true
+# Borg backup - 
+# disabled for now as it does not support postgres 17 2024-10-04
+
+backup_borg_enabled: false
 backup_borg_location_repositories:
  - ssh://vw7mcrym@vw7mcrym.repo.borgbase.com/./repo
 backup_borg_storage_encryption_passphrase: "19e199DPqToemxubPS52MkWie7uTOKpRtUwXKYGnJVylEEQ7irc8l65SqSMOjxmO"
@@ -75,6 +82,8 @@ backup_borg_ssh_key_private: |
   NwAGVFZjM2YqxHe3ZXOAAAAABm1hdHJpeAECAwQFBgc=
   -----END OPENSSH PRIVATE KEY-----
 
+
+# for turning on the monitoring nodes at stats.anon.nz
 prometheus_enabled: true
 
 # You can remove this, if unnecessary.
@@ -96,3 +105,11 @@ grafana_default_admin_user: "euanmc"
 
 # Changing the password subsequently won't work.
 grafana_default_admin_password: "mydarkdisquiet-01!"
+
+# for turning on the sysapse admin page to allow for easier administration of the synapse server
+
+matrix_synapse_admin_enabled: true
+
+# another id server which should give better privacy but this is still best testing
+
+matrix_ma1sd_enabled: true
